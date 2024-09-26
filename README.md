@@ -1,10 +1,12 @@
 # PGCGAP - the Prokaryotic Genomics and Comparative Genomics Analysis Pipeline
-![Platform](https://badgen.net/badge/platform/WSL,Linux,macOS?list=|)
-![License](https://badgen.net/github/license/liaochenlanruo/pgcgap)
+![](https://img.shields.io/badge/Platform-WSL%2FLinux%2FmacOS-green)
+[![GitHub license](https://img.shields.io/github/license/liaochenlanruo/pgcgap)](https://github.com/liaochenlanruo/pgcgap/blob/master/LICENSE)
 [![Version](https://anaconda.org/bioconda/pgcgap/badges/version.svg)](https://anaconda.org/bioconda/pgcgap)
 ![Downloads conda](https://img.shields.io/conda/dn/bioconda/pgcgap.svg?style=flat)
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/pgcgap/README.html)
+<a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=O3BRm-sq-Ff3nKJU718Ut3uGwuodexjU&jump_from=webapi"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="生信之巅2群" title="生信之巅2群"></a>
 
+**Anyone who want a help from me, please create an [Issue](https://github.com/liaochenlanruo/pgcgap/issues) on GitHub. Sometimes, I can't send E-mail successfully to your mail server due to unknown reasons, sometimes. The user also can contact me by instant-messaging software，such as QQ (ID：[518953730](https://jq.qq.com/?_wv=1027&k=b59RfLly) or ![WeChat](https://badges.aleen42.com/src/wechat.svg) (ID: liaochenlanruo).**
 
 [English Readme](https://liaochenlanruo.github.io/pgcgap?_blank) | [Chinese Readme](https://liaochenlanruo.github.io/2019/04/28/PGCGAP%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/?_blank)
 
@@ -40,29 +42,29 @@ The software was tested successfully on Windows WSL, Linux x64 platform and macO
 
 __Step1: Install PGCGAP__
 
-```
-$conda create -n pgcgap python=3
-$conda activate pgcgap
-$conda install pgcgap
-```
-<p><strong>Notice: What should we do when the installation is slow? </strong>As more and more software is contained in CONDA and the index files become larger, the search space for the software that satisfies all the software dependencies in the environment becomes larger and larger when installing a new software, making "Solving Environment" slower and slower. Sometimes we can't even install the software through CONDA. In fact, we can do something instead of just waiting.<br/></p>
-
-
-- Method 1: use mamba to deal with the slow development of "solving environment" when using CONDA.
-    <pre>
-    $conda activate pgcgap
-    $conda install mamba -c conda-forge
-    $mamba install pgcgap
-    </pre>
-
-- Method 2: use "environment.yaml" we provided to deal with the slow development of "solving environment" when using CONDA. Run the following commands to download the <a href="https://github.com/liaochenlanruo/pgcgap/blob/master/conda/pgcgap_latest_env.yml">latest environmental file</a> and install PGCGAP:
-    <pre>
-    # download pgcgap_latest_env.yml
-    $wget https://github.com/liaochenlanruo/pgcgap/blob/master/conda/pgcgap_latest_env.yml
+- Method 1: use mamba to install PGCGAP ([![GitHubversion](https://anaconda.org/bioconda/pgcgap/badges/version.svg)](https://anaconda.org/bioconda/pgcgap) is now avaliable)
 	
-    # create a conda environment named as pgcgap and install the latest version of PGCGAP
-    $conda env create -f pgcgap_latest_env.yml
-    </pre>
+	```bash
+	# Install mamba first
+	conda install mamba
+	
+	# Usually specify the latest version of PGCGAP
+	mamba create -n pgcgap pgcgap=1.0.35
+	```
+
+- Method 2: use \"environment.yaml\". Run the following commands to download the [latest environmental file](https://bcam.hzau.edu.cn/PGCGAP/conda/pgcgap.v1.0.34.yml) and install PGCGAP:
+	
+	```bash
+	# Install mamba first
+	conda install mamba
+
+	# download pgcgap.v1.0.35.yml
+	wget --no-check-certificate https://bcam.hzau.edu.cn/PGCGAP/conda/pgcgap.v1.0.35.yml
+
+	# create a conda environment named as pgcgap and install the latest version of PGCGAP
+	mamba env create -f pgcgap.v1.0.35.yml -n pgcgap
+
+	```
 
 __Step2: Setup COG database__ (Users should execute this after first installation of pgcgap)
 
@@ -92,8 +94,6 @@ $docker pull quay.io/biocontainers/pgcgap:<tag>
 - [FastANI](https://github.com/ParBLiSS/FastANI)
 - [Fastme](http://www.atgc-montpellier.fr/fastme/binaries.php)
 - [Fastp](https://github.com/OpenGene/fastp)
-- [Gblocks](http://molevol.cmima.csic.es/castresana/Gblocks_server.html)
-- [Gubbins](https://github.com/sanger-pathogens/gubbins) >=2.3.4
 - [Htslib](https://github.com/samtools/htslib)
 - [IQ-TREE](http://www.iqtree.org/)
 - [Mafft](https://mafft.cbrc.jp/alignment/software/)
@@ -104,6 +104,7 @@ $docker pull quay.io/biocontainers/pgcgap:<tag>
 - [OrthoFinder](https://github.com/davidemms/OrthoFinder)
 - [OpenJDK8](https://openjdk.java.net/)
 - [PAL2NAL v14](http://www.bork.embl.de/pal2nal/)
+- [Panaroo](https://github.com/gtonkinhill/panaroo)
 - [Perl](http://www.perl.org/get.html) & the modules
   - [perl-bioperl](http://metacpan.org/pod/BioPerl)
   - [perl-data-dumper](http://metacpan.org/pod/Data::Dumper)
@@ -124,7 +125,6 @@ $docker pull quay.io/biocontainers/pgcgap:<tag>
   - [gplots](https://cran.r-project.org/web/packages/gplots/)
   - [pheatmap](https://cran.r-project.org/web/packages/pheatmap/index.html)
   - [plotrix](https://cran.r-project.org/web/packages/plotrix/)
-- [Roary](https://sanger-pathogens.github.io/Roary/)
 - [Sickle-trim](https://github.com/najoshi/sickle)
 - [Snippy](https://github.com/tseemann/snippy)
 - [Snp-sites](https://github.com/sanger-pathogens/snp-sites)
@@ -143,7 +143,7 @@ Please report any issues to the [issues page](https://github.com/liaochenlanruo/
 
 ## Citation
 
-If you use this software please cite: Liu H, Xin B, Zheng J, Zhong H, Yu Y, Peng D, Sun M. Build a bioinformatics analysis platform and apply it to routine analysis of microbial genomics and comparative genomics. *Protocol exchange*, 2021. DOI: [10.21203/rs.2.21224/v5](https://doi.org/10.21203/rs.2.21224/v5)
+If you use this software please cite: Liu H, Xin B, Zheng J, Zhong H, Yu Y, Peng D, Sun M. Build a bioinformatics analysis platform and apply it to routine analysis of microbial genomics and comparative genomics. *Protocol exchange*, 2022. DOI: [10.21203/rs.2.21224/v6](https://doi.org/10.21203/rs.2.21224/v6)
 
 
 ## Usages
